@@ -1,0 +1,46 @@
+---
+interface Props {
+  author?: string
+}
+
+const { author, ...rest } = Astro.props
+---
+<blockquote class="blockquote" {...rest}>
+  <div class="_inner">
+    <div class="_text"><slot/></div>
+    {author && <div class="_author">– {author}</div>}
+  </div>
+</blockquote>
+
+<style lang="scss">
+.blockquote {
+  width: 100%;
+
+  ._inner {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 750px;
+    margin: auto;
+    padding-inline: var(--app-size-5);
+    border-inline: 2px solid black;
+  }
+
+  ._text {
+    font-family: var(--app-font-serif);
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  ._author {
+    font-family: var(--app-font);
+    font-size: 20px;
+    margin-top: var(--app-size-8);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+  }
+}
+</style>

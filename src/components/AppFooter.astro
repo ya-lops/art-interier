@@ -1,0 +1,97 @@
+---
+import Logo from "./Logo.astro"
+import Nav from "./Nav.astro"
+import SocialLinks from "./SocialLinks.astro";
+import Copyright from "./Copyright.astro";
+---
+
+<footer class="appFooter">
+  <div class="container">
+    <div class="appFooter__inner">
+      <section class="_company">
+        <div class="_logo">
+          <Logo grayscale size={48}/>
+        </div>
+        <div class="_slogan">
+          Вдохновение, воплощенное в каждой детале интерьера
+        </div>
+        <div class="_links">
+          <SocialLinks/>
+        </div>
+      </section>
+      <section class="_nav">
+        <div class="appFooter__nav-group">
+          <Nav list/>
+        </div>
+        <div class="appFooter__nav-group">
+          <ul class="_contacts">
+            <li>Москва, Большая Садовая, 15</li>
+            <li><a href="mailto:contact@art-interier.ru">contact@art-interier.ru</a></li>
+            <li><a href="tel:+79876543210">+7 (987) 654-3210</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <aside class="appFooter__copyright">
+        <Copyright brand="Арт-Интерьер"/>
+      </aside>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+.appFooter {
+  margin-top: var(--app-size-20);
+  padding-top: var(--app-size-10);
+  background: var(--color-fill-accent-light);
+
+  &__inner {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,3fr);
+  }
+
+  ._company {
+    display: flex;
+    flex-flow: column;
+    gap: var(--app-size-5);
+  }
+
+  ._slogan {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  ._links {
+    margin-top: var(--app-size-5);
+  }
+
+  ._nav {
+    justify-self: end;
+    display: flex;
+    gap: var(--app-size-10);
+  }
+
+  ._contacts {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    gap: var(--app-size-2);
+    font-family: var(--app-font);
+    color: var(--color-text-primary);
+  }
+
+  &__copyright {
+    grid-column: 1/-1;
+    justify-self: center;
+    margin-top: var(--app-size-10);
+    padding: var(--app-size-4);
+  }
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+</style>

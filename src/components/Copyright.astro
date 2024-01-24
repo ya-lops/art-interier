@@ -1,0 +1,25 @@
+---
+interface Props {
+  brand: string
+}
+
+const { brand } = Astro.props
+const currentYear = new Date().getFullYear();
+---
+
+<div class="copyright">
+  <div>© {brand} {new Date().getFullYear()}</div>
+  <small>сделал Мони Косса с помощью <a rel="nofollow" target="_blank" href="https://astro.new/latest">Astro</a></small>
+</div>
+
+<style lang="scss">
+.copyright {
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  text-align: center;
+
+  small {
+    font-size: 14px;
+  }
+}
+</style>

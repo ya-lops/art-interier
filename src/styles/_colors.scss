@@ -1,0 +1,13 @@
+@layer base {
+  :root {
+    --color-fill-accent: #CDA274;
+    --color-fill-accent-light: #F9F9F9;
+    --color-fill-accent-hover: color-mix(in oklab, var(--color-fill-accent), black 10%);
+    --color-fill-dark: #292F36;
+    --color-fill-dark-hover: color-mix(in oklab, var(--color-fill-dark), white 10%);
+    --color-text-primary: #292F36;
+    --color-text-primary-inverse: #eeeeee;
+    --color-text-secondary: #4D5053;
+    --color-text-accent: #b15e04;
+  }
+}

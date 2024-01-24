@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Banner from '../../components/Banner.astro';
+import Services from '../../components/Services.astro';
+import Feedback from '../../components/Feedback.astro';
+import LinkButton from '../../components/LinkButton.astro';
+import User from '../../data/users.json';
+---
+
+<Layout title="Арт-Интерьер - Услуги">
+	<Banner 
+		bg='url(images/banner-services.jpg)'
+		title='Услуги'
+	/>
+
+	<Banner
+		bg='url(/images/banner-home.png)'
+		title='Ищете идеи интерьера?'>
+		Мы знаем, как это сделать!
+		<LinkButton primary label="Подробнее" href="/about" slot="after-link">
+	</Banner>
+</Layout>

@@ -1,0 +1,42 @@
+---
+interface Props {
+  grayscale?: boolean;
+  size?: number
+}
+
+const { grayscale, size = 64 } = Astro.props;
+---
+
+<div class:list={['logo', {'+grayscale':grayscale}]} style={'--_logo-media-size: '+size+'px'}>
+  <img class="_media" src="/images/logo.png"/>
+  <div class="_text">Арт-Интерьер</div>
+</div>
+
+<style lang="scss">
+.logo {
+  display: flex;
+  align-items: center;
+  
+  ._media {
+    max-width: var(--_logo-media-size);
+  }
+
+  ._text {
+    font-size: var(--_logo-text-size, 32px);
+    color: var(--color-text-primary);
+    font-family: var(--app-font-serif);
+    letter-spacing: -1px;
+    text-shadow: -2px 0px var(--color-fill-accent);
+  }
+
+  &.\+grayscale {
+    --_logo-text-size: 24px;
+
+    filter: grayscale(.85);
+
+    ._text {
+      text-shadow: none;
+    }
+  }
+}
+</style>

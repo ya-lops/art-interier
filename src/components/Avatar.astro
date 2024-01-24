@@ -1,0 +1,62 @@
+---
+interface Props {
+  image?: string;
+  alt?: string;
+  size?: string;
+  name?: string;
+  location?: string;
+}
+
+const { image, alt, size, name, location, ...rest } = Astro.props
+---
+
+<div class="avatar" {...rest}>
+  <div class="_image">
+    <img src={image} alt={alt}>
+  </div>
+  {name && <>
+    <div class="_info">
+      <div class="_name">{name}</div>
+      <div class="_location" title={location}>{location}</div>
+    </div>
+  </>}
+</div>
+
+<style lang="scss">
+.avatar {
+  ._image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  ._name {
+    font-family: var(--app-font-serif);
+    color: var(--color-text-primary);
+  }
+
+  ._location {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &:has(._info) {
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr);
+    column-gap: var(--app-size-4);
+  }
+}
+</style>

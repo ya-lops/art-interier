@@ -1,0 +1,58 @@
+---
+interface Props {
+  params?: string;
+  label: string;
+  primary?: boolean;
+}
+
+const { params, label, primary, ...rest } = Astro.props;
+---
+
+<button {...rest} class:list={[ 'button', { '+primary': primary } ]}>
+  <slot name="prepend"></slot>
+  <span>{label}</span>
+  <slot name="append"></slot>
+</button>
+
+<style lang="scss">
+  .button {
+    -webkit-appearance: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 115px;
+    min-height: 75px;
+    padding: var(--app-size-4) var(--app-size-8);
+    border: 1px solid var(--color-fill-dark);
+    border-radius: 18px;
+    outline: none;
+    background-color: var(--color-fill-dark);
+    box-shadow: 0px 10px 20px 0px #1F2022;
+    color: var(--color-text-primary-inverse);
+    font-family: var(--app-font);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--color-fill-dark-hover);
+      background-color: var(--color-fill-dark-hover);
+    }
+
+    &.\+primary {
+      border: 1px solid var(--color-fill-accent);
+      background-color: var(--color-fill-accent);
+      color: var(--color-text-primary);
+
+      &:hover {
+        border-color: var(--color-fill-accent-hover);
+        background-color: var(--color-fill-accent-hover);
+      }
+    }
+  }
+</style>

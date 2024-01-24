@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Banner from '../components/Banner.astro';
+import Services from '../components/Services.astro';
+import Feedback from '../components/Feedback.astro';
+import LinkButton from '../components/LinkButton.astro';
+import User from '../data/users.json';
+---
+
+<Layout title="Арт-Интерьер">
+	
+	<div class="container">
+		<Banner hero title="Искусство, которое мы создаем вместе с вами" bg="url('/images/hero-home.png')">
+			Доверьте нам заботу о деталях и наслаждайтесь идеальным интерьером каждый день.
+		</Banner>
+	</div>
+
+	<div class="container">
+		<Services amount={3}/>
+	</div>
+
+	<div class="container">
+		<Feedback title="Что о нас говорят наши клиенты"/>
+	</div>
+
+	<div class="container" style="display: none;">
+		<h1>Users</h1>
+		{User.map((user) => (
+			<div>{user.name} - {user.email}</div>
+		))}
+	</div>
+
+	<Banner
+		bg='url(/images/banner-home.png)'
+		title='Ищете идеи интерьера?'>
+		Мы предложим вам лучшие решения!
+	</Banner>
+	
+</Layout>

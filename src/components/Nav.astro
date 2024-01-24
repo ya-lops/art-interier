@@ -1,0 +1,69 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+
+export interface Props {
+  list?:boolean;
+}
+
+const {list = false, ...rest} = Astro.props as Props;
+
+const Links = [
+  {text: 'Главная', href: '/'},
+  {text: 'Кто мы', href: '/about'},
+  {text: 'Услуги', href: '/services'},
+  {text: 'Команда', href: '/team'},
+  {text: 'Блог', href: '/blog'},
+  {text: 'Контакты', href: '/contacts'},
+]
+---
+
+{!list && <>
+  <nav class="nav" {...rest}>
+    {Links.map((link) => (
+      <a class={ currentPath === (link.href).substring(1) ? "_item +active" : "_item" } href={link.href}>{link.text}</a>
+		))}
+  </nav>
+</>}
+
+{list && <>
+  <ul class="nav +list" {...rest}>
+    {Links.map((link) => (
+      <li><a class="_item" href={link.href}>{link.text}</a></li>
+		))}
+  </ul>
+</>}
+
+<style lang="scss">
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  ._item {
+    color: var(--color-text-primary);
+    font-size: var(--_font-size, 20px);
+    font-weight: 500;
+    text-decoration: none;
+    text-align: left;
+
+    &:hover {
+      color: var(--color-text-accent);
+    }
+    
+    &.\+active {
+      color: var(--color-text-accent);
+    }
+  }
+
+  &.\+list {
+    --_font-size: 1rem;
+
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    gap: var(--app-size-2);
+    font-family: var(--app-font);
+  }
+}
+</style>

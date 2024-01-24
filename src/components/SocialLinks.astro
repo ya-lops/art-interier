@@ -1,0 +1,62 @@
+---
+import Icon from "./Icon.astro"
+
+interface Props {
+  showLabels?: boolean
+  row?: boolean
+}
+
+const {showLabels = false, row = true, ...rest} = Astro.props
+
+const Links = [
+  {
+    "href": "#telegram",
+    "icon": "telegram",
+    "label": "Telegram"
+  },
+  {
+    "href": "#vk",
+    "icon": "vk",
+    "label": "vk"
+  }
+]
+---
+
+<div class:list={['socialLinks', {'+row' : row}]}>
+  {Links.map((link) => (
+    <div class="_item">
+      <a href={link.href} {...rest}>
+        {link.icon && <>
+          <Icon name={link.icon}/>
+        </>}
+        {showLabels ?? <>
+          {link.label && <div>{link.label}</div>}
+        </>}
+      </a>
+    </div>
+  ))}
+</div>
+
+<style lang="scss">
+.socialLinks {
+  display: flex;
+  flex-flow: column;
+  gap: var(--app-size-4);
+
+  ._item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: scale .25s;
+    will-change: scale;
+
+    &:hover {
+      scale: 1.15;
+    }
+  }
+
+  &.\+row {
+    flex-flow: row;
+  }
+}
+</style>

@@ -1,0 +1,29 @@
+@layer layout {
+  :where(h1, h2, h3) {
+    color: var(--color-text-primary);
+    font-family: var(--app-font-serif);
+    line-height: 1;
+    text-wrap: balance;
+  }
+  
+  :is(.\+typo-header-1, h1) {
+    font-size: 65px;
+  }
+  
+  :is(.\+typo-header-2, h2) {
+    font-size: 60px;
+  }
+  
+  :is(.\+typo-subtitle-1, h3) {
+    font-size: 25px;
+  }
+   
+  :is(.\+typo-body-1, p) {
+    font-size: 22px;
+  }
+  
+  :is(.\+typo-body-2, body) {
+    font-size: 16px;
+  }
+  
+}

@@ -1,0 +1,31 @@
+---
+import Logo from "./Logo.astro"
+import Nav from "./Nav.astro"
+---
+
+<header class="appHeader">
+  <div class="container">
+    <a href="/" class="_logo">
+      <Logo/>
+    </a>
+    <div class="_nav">
+      <Nav hx-boost="false"/>
+    </div>
+  </div>
+</header>
+
+
+<style lang="scss">
+.appHeader {
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-block: 48px;
+  }
+
+  ._logo {
+    margin-right: auto;
+  }
+}
+</style>

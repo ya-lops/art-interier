@@ -1,0 +1,67 @@
+---
+interface Props {
+	amount: number;
+}
+
+import Service from '../data/services.json';
+
+const { amount = 3, ...rest } = Astro.props as Props;
+---
+
+<div class="services" {...rest}>
+  {Service.slice(0, amount).map((service) => (
+    <div class="_item">
+      <div class="_item-title">{service.title}</div>
+      <div class="_item-description">{service.description}</div>
+    </div>
+  ))}
+</div>
+
+<style lang="scss">
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--app-size-5);
+
+  ._item {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--app-size-4);
+    flex: 1 0 320px;
+    max-width: 500px;
+    padding-block: var(--app-size-20);
+    padding-inline: var(--app-size-5);
+    border-radius: var(--app-size-6);
+
+    &:hover {
+      --_item-text-color: var(--color-text-accent);
+      
+      background-color: var(--color-fill-accent-light);
+    }
+  }
+
+  :where(._item-title, ._item-description) {
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  ._item-title {
+    font-family: var(--app-font-serif);
+    font-size: 25px;
+    line-height: 1.25;
+    color: var(--_item-text-color, var(--color-text-primary));
+  }
+
+  ._item-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--_item-text-color, var(--color-text-primary));
+  }
+}
+</style>
