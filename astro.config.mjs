@@ -6,6 +6,8 @@ export default defineConfig({
   scopedStyleStrategy: 'class',
   trailingSlash: 'ignore',
   build: {
-    inlineStylesheets: 'never'
+    assets: 'assets',
+    inlineStylesheets: 'never',
+    format: 'file'
   }
 });
