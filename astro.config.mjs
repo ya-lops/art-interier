@@ -4,10 +4,8 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   compressHTML: false,
   scopedStyleStrategy: 'class',
-  root: './',
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
   build: {
-    format: 'file',
     inlineStylesheets: 'never'
   }
 });

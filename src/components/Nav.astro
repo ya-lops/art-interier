@@ -1,6 +1,5 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1);
+const currentPath = Astro.url.pathname;
 
 export interface Props {
   list?:boolean;
@@ -10,18 +9,18 @@ const {list = false, ...rest} = Astro.props as Props;
 
 const Links = [
   {text: 'Главная', href: '/'},
-  {text: 'Кто мы', href: '/about'},
-  {text: 'Услуги', href: '/services'},
-  {text: 'Команда', href: '/team'},
-  {text: 'Блог', href: '/blog'},
-  {text: 'Контакты', href: '/contacts'},
+  {text: 'Кто мы', href: '/about/'},
+  {text: 'Услуги', href: '/services/'},
+  {text: 'Команда', href: '/team/'},
+  {text: 'Блог', href: '/blog/'},
+  {text: 'Контакты', href: '/contacts/'},
 ]
 ---
 
 {!list && <>
   <nav class="nav" {...rest}>
     {Links.map((link) => (
-      <a class={ currentPath === (link.href).substring(1) ? "_item +active" : "_item" } href={link.href}>{link.text}</a>
+      <a class={ currentPath == link.href ? "_item +active" : "_item"} href={link.href}>{link.text}</a>
 		))}
   </nav>
 </>}

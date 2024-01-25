@@ -16,9 +16,7 @@ const { link, title, bg, hero, ...rest } = Astro.props;
   <slot name="before-title"></slot>
   <h1 class="_title">{title}</h1>
   <slot name="after-title"></slot>
-  
   <p class="_slot"><slot /></p>
-
   <slot name="before-link"></slot>
   {link && <a>
     <a class="_link" href={link.href}>{link.label}</a>
